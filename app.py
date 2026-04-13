@@ -44,15 +44,12 @@ def load(n):
 def chat_history():
     name = ["role", "content"]
     test = pd.DataFrame(columns=name, data=st.session_state.past)
-
     gcs_info = dict(st.secrets["connections"]["gcs"])
-
     client = storage.Client.from_service_account_info(
         gcs_info,
         project=gcs_info["project_id"]
     )
-
-    bucket = client.bucket("ai_lower")
+    bucket = client.bucket("yuan1107/human_lower")
     blob = bucket.blob(f"{nickname}.csv")
 
     blob.upload_from_string(
