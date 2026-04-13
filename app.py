@@ -27,10 +27,11 @@ human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/h
 st.title("💬 TechVantage Chat Room")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
+
 nickname = st.text_input("昵称")
 
 if not nickname:
-    st.warning("请设置您的昵称")
+    st.warning("请设置您的昵称。设置昵称后，可在下方的聊天框内开始讨论。")
     st.stop()
 
 def load(n):
@@ -108,7 +109,7 @@ for msg in st.session_state.past:
         message(msg["content"], is_user=True, avatar_style="thumbs")
         #print(msg["content"])
     if msg["role"] == "assistant":
-        message(msg["content"], avatar_style="bottts")
+        message(msg["content"], avatar_style="thumbs")
         #print(msg["content"])
 
 
@@ -126,8 +127,8 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         load(3)
-         message("你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="bottts")
+         load(8)
+         message("你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。"})
     else:
@@ -138,12 +139,11 @@ if prompt := st.chat_input("开始聊天"):
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
         response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
-        time.sleep(2)
-        load(2)
+        load(10)
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
-        message(msg, avatar_style="bottts")
+        message(msg, avatar_style="thumbs")
         #st.chat_message("assistant").write(msg)
 
 
