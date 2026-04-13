@@ -128,9 +128,9 @@ if prompt := st.chat_input("开始聊天"):
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
          load(8)
-         message("你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="thumbs")
+         message("你好哇！我叫小元", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
-         st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。"})
+         st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元"})
     else:
         client = OpenAI(api_key=openai_api_key, base_url="https://api.deepseek.com")
         st.session_state.input.append({"role":"system", "content":kevin})
