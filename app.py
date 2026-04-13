@@ -70,7 +70,7 @@ with st.sidebar:
         st.header("❗ 结束讨论后请按下按钮 ")
         if st.button("结束聊天", type="primary"):
            chat_history()
-           progress_text = "聊天连接已断开，请回到问卷页面"
+           progress_text = "聊天记录已保存，请回到问卷页面"
            my_bar = st.progress(0, text=progress_text)
            for percent_complete in range(100):
               time.sleep(0.01)
