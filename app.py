@@ -124,7 +124,7 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         load(8)
+         load(3)
          message("你好哇！我叫小元", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元"})
