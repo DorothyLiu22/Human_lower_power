@@ -28,7 +28,7 @@ st.title("💬 TechVantage Chat Room")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 
-nickname = st.text_input("昵称")
+nickname = st.text_input("您的昵称")
 
 if not nickname:
     st.warning("请设置您的昵称。设置昵称后，可在下方的聊天框内开始讨论。")
@@ -36,7 +36,7 @@ if not nickname:
 
 def load(n):
     placeholder = st.empty()
-    time.sleep(1)
+    time.sleep(2)
     placeholder.text("对方正在输入中...")
     time.sleep(n)
     placeholder.empty()
