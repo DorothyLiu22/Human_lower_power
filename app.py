@@ -49,7 +49,7 @@ def chat_history():
         gcs_info,
         project=gcs_info["project_id"]
     )
-    bucket = client.bucket("yuan1107/human_lower")
+    bucket = client.bucket("human_lower")
     blob = bucket.blob(f"{nickname}.csv")
 
     blob.upload_from_string(
