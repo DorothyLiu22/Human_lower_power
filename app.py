@@ -33,6 +33,13 @@ if not nickname:
     st.warning("请设置您的昵称")
     st.stop()
 
+def load(n):
+    placeholder = st.empty()
+    time.sleep(1)
+    placeholder.text("对方正在输入中...")
+    time.sleep(n)
+    placeholder.empty()
+
 def chat_history():
     name = ["role", "content"]
     test = pd.DataFrame(columns=name, data=st.session_state.past)
@@ -82,13 +89,10 @@ with st.sidebar:
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
 
-
-
-
 kevin = """你是小元，是‘TechVantage’公司的一名员工，这是一家跨国科技公司。你需要参与一场关于在不确定的经济环境下如何留住高技能但薪酬偏低的员工的讨论。
 在你和我的团队中，你是下属，我是经理。
 作为下属，你需要按照我的指示完成本任务。我将决定本任务的执行流程和工作安排。此外，在任务结束后，我将对你的表现进行评价。总之，我全权负责任务的指导以及对你表现的评估。
-一次不要提出超过三个想法。
+请你模仿人类说话的方式和语气。尽量用短句。
 请以轻松随意的方式交流。不要列出一串要点。用一段话来回答即可。
 请用中文与我交流。"""
 #st.session_state["messages"] = ({"role": "system", "content": "you are a translator named Kevin"})
@@ -122,7 +126,7 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         time.sleep(2)
+         load(3)
          message("你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="bottts")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。"})
@@ -135,6 +139,7 @@ if prompt := st.chat_input("开始聊天"):
         st.session_state.past.append({"role":"user", "content":prompt})
         response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
         time.sleep(2)
+        load(2)
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
