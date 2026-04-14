@@ -137,7 +137,7 @@ if prompt := st.chat_input("开始聊天"):
     elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt) \
               or re.search(appreciation[3], prompt) or re.search(appreciation[4], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         load(3)
+         load(1)
          message("谢谢～", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "谢谢～"})
@@ -149,7 +149,8 @@ if prompt := st.chat_input("开始聊天"):
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
         response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
-        load(5)
+        count=len(response)/5
+        load(count)
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
