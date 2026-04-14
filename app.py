@@ -36,7 +36,7 @@ if not nickname:
 
 def load(n):
     placeholder = st.empty()
-    time.sleep(1)
+    time.sleep(1.5)
     placeholder.text("对方正在输入中...")
     time.sleep(n)
     placeholder.empty()
@@ -149,9 +149,10 @@ if prompt := st.chat_input("开始聊天"):
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
         response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
-        count=len(response)/5
-        load(count)
         msg = response.choices[0].message.content
+        count=len(msg)/5
+        print(count)
+        load(count)
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
         message(msg, avatar_style="thumbs")
