@@ -57,7 +57,7 @@ def chat_history():
         content_type="text/csv"
     )
 with st.sidebar:
-    st.sidebar.title("💬 TechVantage Chat Room")
+    st.sidebar.title("💬 TechVantage 聊天室")
 
     blank = st.container(border=False, height=20)
     blank.title("")
