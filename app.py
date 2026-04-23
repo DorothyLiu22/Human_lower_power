@@ -137,7 +137,7 @@ if prompt := st.chat_input("开始聊天"):
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "我是人啊。"})
     elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt) \
-              or re.search(appreciation[3], prompt) or re.search(appreciation[4], prompt) or or re.search(appreciation[5], prompt) or or re.search(appreciation[6], prompt):
+              or re.search(appreciation[3], prompt) or re.search(appreciation[4], prompt) or re.search(appreciation[5], prompt) or re.search(appreciation[6], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
          load(1)
          message("谢谢～", avatar_style="thumbs")
