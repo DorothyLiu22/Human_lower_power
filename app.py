@@ -117,7 +117,7 @@ welcome = ["你好","您好","hello","hi", "哈喽"]
 name = ["你是谁","你叫什么", "名字"]
 #start = ["开始讨论", "讨论"]
 #end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
-appreciation = ["真好", "真不错","厉害","非常好", "很好"]
+appreciation = ["真好", "真不错","厉害","非常好", "很好","真棒“，"非常棒"]
 bye = ["拜拜", "就这样","没有其他想法了", "想到这些","没有新的想法"]
 identity = ["是AI", "是人", "是机器人"]
 
@@ -137,7 +137,7 @@ if prompt := st.chat_input("开始聊天"):
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "我是人啊。"})
     elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt) \
-              or re.search(appreciation[3], prompt) or re.search(appreciation[4], prompt):
+              or re.search(appreciation[3], prompt) or re.search(appreciation[4], prompt) or or re.search(appreciation[5], prompt) or or re.search(appreciation[6], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
          load(1)
          message("谢谢～", avatar_style="thumbs")
