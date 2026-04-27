@@ -158,7 +158,7 @@ if prompt := st.chat_input("开始聊天"):
         load(count)
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
-        message(msg, avatar_style="bottts")
+        message(msg, avatar_style="thumbs")
         #st.chat_message("assistant").write(msg)
 
 
