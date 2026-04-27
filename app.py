@@ -150,7 +150,7 @@ if prompt := st.chat_input("开始聊天"):
         message(prompt, is_user=True, avatar_style="thumbs")
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
-        response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
+        response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
         msg = response.choices[0].message.content
         count=len(msg)/5
         print(count)
