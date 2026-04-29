@@ -126,7 +126,7 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         load(3)
+         load(5)
          message("你好哇！我叫小元。我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元"})
@@ -153,7 +153,7 @@ if prompt := st.chat_input("开始聊天"):
         response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
         time.sleep(2)
         msg = response.choices[0].message.content
-        count=len(msg)/5
+        count=len(msg)/2
         print(count)
         load(count)
         st.session_state.output.append({"role": "assistant", "content": msg})
